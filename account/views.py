@@ -33,3 +33,7 @@ def user_login(request):
             messages.error(request, "Invalid username or password.")
 
     return render(request, "login.html")
+
+def user_logout(request):
+    logout(request)
+    return redirect("login")
