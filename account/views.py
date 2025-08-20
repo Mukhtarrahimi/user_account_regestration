@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import Item
 
 # Create your views here.
 def register(request):
@@ -39,4 +40,5 @@ def user_logout(request):
     return redirect("login")
 
 def home(request):
-    return render(request, "home.html")
+    items = Item.objects.all()
+    return render(request, "home.html", {"items": items})
